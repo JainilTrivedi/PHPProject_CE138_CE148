@@ -19,23 +19,10 @@
                         <input type="text" name="phoneno" placeholder="Phone number">
                         <input type="text" name="uname" placeholder="Choose Username">
                         <input type="text" name="role" placeholder="role">
-
-                        <!-- <font color="white"><label for="subject">
-                                <font color="red"> * </font>Choose a preferred subject :
-                            </label></font>
-                        <select name="subject" id="subject">
-                            <option value="PHP">PHP</option>
-                            <option value="CSA">CSA</option>
-                            <option value="Python">Python</option>
-                            <option value="DM">DM</option>
-                            <option value="C++">C++</option>
-                        </select> -->
                         <input type="password" name="pass" placeholder="Password">
                         <input type="password" name="pass2" placeholder="Confirm Password">
                         <input type="submit" name="submit" value="Signup!" href="#">
-
                     </form>
-
                 </div>
             </div>
         </div>
@@ -50,7 +37,6 @@
         </table>
     </div>
 </body>
-
 </html>
 <?php
 require_once "config.php";

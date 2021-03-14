@@ -61,12 +61,7 @@ body {
   width: 300px;
   border-color: #2ecc71;
 }
-.box label {
-  float: left;
-  clear: none;
-  display: block;
-  padding: 0px 1em 0px 8px;
-}
+
 .rad {
   color: white;
 }

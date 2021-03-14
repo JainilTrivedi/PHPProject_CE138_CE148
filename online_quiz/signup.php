@@ -18,7 +18,11 @@
                         <input type="email" name="email" placeholder="Email-id">
                         <input type="text" name="phoneno" placeholder="Phone number">
                         <input type="text" name="uname" placeholder="Choose Username">
-                        <input type="text" name="role" placeholder="role">
+                        <label for="role">Role</label>
+                        <select name="role" id="role">
+                            <option value="Teacher">Teacher</option>
+                            <option value="Student">Student</option>
+                        </select>
                         <input type="password" name="pass" placeholder="Password">
                         <input type="password" name="pass2" placeholder="Confirm Password">
                         <input type="submit" name="submit" value="Signup!" href="#">
@@ -37,6 +41,7 @@
         </table>
     </div>
 </body>
+
 </html>
 <?php
 require_once "config.php";
@@ -48,7 +53,6 @@ if (isset($_POST['submit'])) {
     $username = $_POST['uname'];
     $password = $_POST['pass'];
     $role = $_POST['role'];
-
     if ($role == "Teacher") {
         $insert_query = "insert into `teacher`(firstname,lastname,Email,Phone_no,username,password) values ('$firstname','$lastname','$email','$contact','$username','$password')";
         $database->query($insert_query);
@@ -59,4 +63,4 @@ if (isset($_POST['submit'])) {
         echo "Invalid";
     }
 }
-?>
+?>      

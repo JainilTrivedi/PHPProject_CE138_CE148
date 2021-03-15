@@ -17,9 +17,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       if ($role == "teacher") {
          $sql = "SELECT * from teacher WHERE username = '$username' AND password = '$password'";
          $teacher_row = $database->query($sql);
-         $present_teacher = $teacher_row->fetchColumn();
-         if ($present_teacher == 1) {
+         //$present_teacher = $teacher_row->fetchColumn(); //Count 
+         $count = $teacher_row->rowCount();
+
+         if ($count == 1) {
+            $tid = $teacher_row->fetchColumn(0);
             echo "Login Successful as teacher";
+            session_start();
+            $_SESSION['tid'] = $tid;
+            header('location:teacher.php');
          } else {
             echo "Invalid";
          }
@@ -29,6 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
          $present_student = $student_row->fetchColumn();
          if ($present_student == 1) {
             echo "Login successful as a student";
+            header('location:student.php');
          } else {
             echo "Invalid login";
          }

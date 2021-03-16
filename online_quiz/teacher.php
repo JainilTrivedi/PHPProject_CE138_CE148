@@ -10,7 +10,6 @@ $subjects = $database->query($getsubjects);
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -20,8 +19,23 @@ $subjects = $database->query($getsubjects);
 
 <body>
    <h1>Welcome Teacher</h1>
-   <table>
-      <a href="teacher.php?addquiz=1">Add a quiz</a>
+   
+      <a href="teacher.php?addquiz=1">Add a quiz</a> <br>
+
+      <!-- --------------------------------------------------------------------------------- -->
+      <h3> Quiz's added by You </h3>
+      <?php 
+            $showquizquery="SELECT * from quiz where teacher_id=$teacher_id ";
+            $all_quiz=$database->query($showquizquery);
+            //quiz_name total_marks total_question
+            $qname=$all_quiz->fetchColumn(1);
+            
+      ?>
+      <table>
+      <tr>
+         <td>
+         </td>
+      </tr>
    </table>
    <?php
    if (isset($_GET['addquiz']) && $_GET['addquiz'] == 1) { ?>
@@ -30,9 +44,10 @@ $subjects = $database->query($getsubjects);
             <tr>
                <td>
                   <select name="subject_id">
+                     
                      <?php
                      while ($r = $subjects->fetch()) { ?>
-                        <option value="<?php echo $r['subject_id']; ?>"><?php echo $r['subject_name'] ?></option>
+                        <option value="<?php echo  $r['subject_id']; ?>"><?php echo $r['subject_name'] ?></option>
                      <?php } ?>
                   </select>
                </td>
@@ -86,14 +101,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
    $database->query($insert_quiz);
 
    //Following is done to get the id of last inserted quiz
-   $getquizids = "SELECT quiz_id from quiz";
+   $getquizids = "SELECT quiz_id from quiz order by quiz_id DESC";
    $result = $database->query($getquizids);
    $r = '';
-   while ($result->fetch()) {
-      $r = $result->fetch();
-   }
-   $id_in_int = (int)$r['quiz_id'];
-   echo $id_in_int;
-   header("Location:setquiz.php?quizid=" . $id_in_int);
+
+   $rows=$result->fetch(PDO::FETCH_NUM, PDO::FETCH_ORI_LAST);
+   $recent=$rows[0];
+   //echo $recent."<br>";
+
+   $recent_qid=$recent;
+   
+   // $rows=$result->fetch(PDO::FETCH_NUM, PDO::FETCH_ORI_FIRST);
+   // $uid=$rows[0];
+   //echo "Low ".$recent_qid['quiz_id'];
+
+   // while ($result->fetch()) {
+   //    $r = $result->fetch();
+   //    $id_in_int = (int)$r['quiz_id'];
+   //    echo $id_in_int." ";
+   // }
+   // $id_in_int = (int)$r['quiz_id'];
+   // echo $id_in_int;
+   header("Location:setquiz.php?qid=".$recent_qid."&auth=1");
 }
 ?>

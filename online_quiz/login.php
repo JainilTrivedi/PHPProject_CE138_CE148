@@ -55,11 +55,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
          <table>
             <tr>
                <td>Username:</td>
-               <td><input type="text" name="uname" placeholder="Enter Username Here"></td>
+               <td><input type="text" name="uname" required placeholder="Enter Username Here"></td>
             </tr>
             <tr>
                <td>Password:</td>
-               <td><input type="password" name="password" placeholder="Password"></td>
+               <td><input type="password" name="password" required placeholder="Password"></td>
             </tr>
             <input type="hidden" name="role" value="<?php echo $role; ?>">
             <tr>

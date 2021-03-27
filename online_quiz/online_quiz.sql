@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 26, 2021 at 03:06 PM
+-- Generation Time: Mar 27, 2021 at 04:34 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.0
 
@@ -68,7 +68,8 @@ INSERT INTO `questions` (`quiz_id`, `ques`, `optionA`, `optionB`, `optionC`, `op
 (75, 'What is your name?', 'Telusko', 'harry', 'Durgesh', 'Apoorva Sir', 'd'),
 (78, 'The term PHP is an acronym for PHP:_______________?', 'Hypertext Preprocessor', 'Hypertext multiprocessor', 'Hypertext markup Preprocessor', 'Hypertune Preprocessor', 'A'),
 (78, 'Who is founder of PHP?', 'Tim Berners-Lee', 'Brendan Eich', 'Guido van Rossum', 'Rasmus Lerdorf', 'D'),
-(78, 'In which year PHP was created ?', '1993', '1994', '1995', '1996', 'B');
+(78, 'In which year PHP was created ?', '1993', '1994', '1995', '1996', 'B'),
+(79, 'What is 1+1?', '2', '3', '0', '1', 'a');
 
 -- --------------------------------------------------------
 
@@ -92,7 +93,8 @@ CREATE TABLE `quiz` (
 INSERT INTO `quiz` (`quiz_id`, `quiz_name`, `total_marks`, `total_question`, `teacher_id`, `subject_id`) VALUES
 (74, 'PHP_1', 6, 3, 2, 1),
 (75, 'PHP_2', 10, 3, 2, 2),
-(78, 'QUIZ_3', 4, 3, 2, 1);
+(78, 'QUIZ_3', 4, 3, 2, 1),
+(79, 'Math1', 2, 1, 2, 3);
 
 -- --------------------------------------------------------
 
@@ -136,7 +138,9 @@ CREATE TABLE `subject` (
 
 INSERT INTO `subject` (`subject_id`, `subject_name`) VALUES
 (1, 'PHP'),
-(2, 'CSA');
+(2, 'CSA'),
+(3, 'Maths'),
+(10, 'Physics');
 
 -- --------------------------------------------------------
 
@@ -208,7 +212,7 @@ ALTER TABLE `teacher`
 -- AUTO_INCREMENT for table `quiz`
 --
 ALTER TABLE `quiz`
-  MODIFY `quiz_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
+  MODIFY `quiz_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
 
 --
 -- AUTO_INCREMENT for table `student`
@@ -220,7 +224,7 @@ ALTER TABLE `student`
 -- AUTO_INCREMENT for table `subject`
 --
 ALTER TABLE `subject`
-  MODIFY `subject_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `subject_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `teacher`

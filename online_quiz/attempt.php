@@ -29,16 +29,16 @@ if (isset($_GET['quizid'])) {
                     </div>
                     <div class="card-body">
                         <p class="card-title">
-                            <input type="radio" name="quesid<?php echo $got_all_questions['question_id']; ?>" value="A"> <?php echo $got_all_questions['optionA'] . '<br>';  ?>
+                            <input type="radio" name="quesid<?php echo $got_all_questions["question_id"]; ?>" value="A"> <?php echo $got_all_questions['optionA'] . '<br>';  ?>
                         </p>
                         <p class="card-title">
-                            <input type="radio" name="quesid<?php echo $got_all_questions['question_id']; ?>" value="B"> <?php echo $got_all_questions['optionB'] . '<br>';  ?>
+                            <input type="radio" name="quesid<?php echo $got_all_questions["question_id"]; ?>" value="B"> <?php echo $got_all_questions['optionB'] . '<br>';  ?>
                         </p>
                         <p class="card-title">
-                            <input type="radio" name="quesid<?php echo $got_all_questions['question_id']; ?>" value="C"> <?php echo $got_all_questions['optionC'] . '<br>';  ?>
+                            <input type="radio" name="quesid<?php echo $got_all_questions["question_id"]; ?>" value="C"> <?php echo $got_all_questions['optionC'] . '<br>';  ?>
                         </p>
                         <p class="card-text">
-                            <input type="radio" name="quesid<?php echo $got_all_questions['question_id']; ?>" value="D"> <?php echo $got_all_questions['optionD'] . '<br>';  ?>
+                            <input type="radio" name="quesid<?php echo $got_all_questions["question_id"]; ?>" value="D"> <?php echo $got_all_questions['optionD'] . '<br>';  ?>
                         </p>
                         <input type="hidden" name="quizid" value="<?php echo $qid ?>">
                     </div>

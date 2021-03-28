@@ -1,5 +1,6 @@
 <html>
 <?php
+session_start();
 $role = "";
 require_once "config.php";
 if (isset($_GET['teacher'])) {
@@ -23,7 +24,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
          if ($count == 1) {
             $tid = $teacher_row->fetchColumn(0);
             echo "Login Successful as teacher";
-            session_start();
             $_SESSION['tid'] = $tid;
             header('location:teacher.php');
          } else {
@@ -32,9 +32,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       } else if ($role == "student") {
          $sql = "SELECT * from student WHERE username = '$username' AND password = '$password'";
          $student_row = $database->query($sql);
-         $present_student = $student_row->fetchColumn();
+         $present_student = $student_row->rowCount();
          if ($present_student == 1) {
             echo "Login successful as a student";
+            $sid = $student_row->fetchColumn(0);
+            echo "Student id : " . $sid;
+            $_SESSION['sid'] = $sid;
+            echo $_SESSION['sid'];
             header('location:student.php');
          } else {
             echo "Invalid login";

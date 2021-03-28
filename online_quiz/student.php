@@ -1,7 +1,16 @@
 <?php
+session_start();
 require_once "config.php";
 ?>
-
+<?php
+if (isset($_GET['attempts']) && $_GET['attempts'] == 1) {
+   $studentid = $_SESSION['sid'];
+   $getattemptsquery = "SELECT * FROM previousattempts WHERE student_id='$studentid'";
+   $attempts = $database->query($getattemptsquery);
+   $attempt = 1;
+   echo "Attempt : " . $attempt;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -26,41 +35,46 @@ if ($_SERVER["REQUEST_METHOD"] == "GET"  && isset($_GET['sub'])) {
 <body>
    <h1>Welcome Student</h1>
    <h5>
+      <a href="previousattempts.php">Your attempts</a>
       <div class="search">
-
          <form action="student.php" action="GET">
             <input type="text" name="sub">
             <input type="submit" name="submit" value="Search">
          </form>
-         Following quizes are available &nbsp;
-      </div>
+      </div>Following quizes are available &nbsp;
+
    </h5>
    <?php
    $get_subjects_query = "SELECT * FROM subject";
    $subjects = $database->query($get_subjects_query);
 
    while ($subject_row = $subjects->fetch()) {
-      echo '<h1>' . $subject_row['subject_name'] . '</h1>';
+      echo '<h1 align="center">' . $subject_row['subject_name'] . '</h1>';
       $subid = $subject_row['subject_id'];
       $get_quiz_by_subject = "SELECT * from quiz where subject_id='$subid'";
       $sub_quizes = $database->query($get_quiz_by_subject);
+      echo '<div class="row" align="center">';
       while ($quiz_row = $sub_quizes->fetch()) {
    ?>
-         <div class="col">
-            <div class="card text-white bg-success mb-3" style="max-width: 18rem;">
-               <strong>
-                  <div class="card-header"><?php echo $quiz_row['quiz_name']; ?></div>
-               </strong>
-               <div class="card-body">
-                  <h5 class="card-title">Marks : <?php echo $quiz_row['total_marks']; ?></h5>
-                  <p class="card-text">This quiz contains total <?php echo $quiz_row['total_question']; ?> questions.<br>No negative marking will be there</p>
-                  <a class="btn btn-outline-warning" href="attempt.php?quizid=<?php echo $quiz_row['quiz_id']; ?>">Attempt Quiz</a>
+         <div class="row m-2">
+            <div class="col">
+               <div class="card text-white bg-success mb-3" style="max-width: 18rem;">
+                  <strong>
+                     <div class="card-header"><?php echo $quiz_row['quiz_name']; ?></div>
+                  </strong>
+                  <div class="card-body">
+                     <h5 class="card-title">Marks : <?php echo $quiz_row['total_marks']; ?></h5>
+                     <p class="card-text">This quiz contains total <?php echo $quiz_row['total_question']; ?> questions.<br>No negative marking will be there</p>
+                     <a class="btn btn-outline-warning" href="attempt.php?quizid=<?php echo $quiz_row['quiz_id']; ?>">Attempt Quiz</a>
+                  </div>
                </div>
             </div>
          </div>
    <?php
       }
-   } ?>
+      echo '</div>';
+   }
+   ?>
 </body>
 
 </html>

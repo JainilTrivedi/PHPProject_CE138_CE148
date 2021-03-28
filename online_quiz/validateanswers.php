@@ -9,9 +9,8 @@ if (isset($_POST['submit'])) {
     $count = 1;
     while ($row = $questionsfromdb->fetch()) {
         $quesid = $row['question_id'];
-        $attempted_option = $_POST['quesid' . $quesid];
-        $correct_option = $row['correct_option'];
-
+        $attempted_option = strtolower($_POST['quesid' . $quesid]);
+        $correct_option = strtolower($row['correct_option']);
         if ($attempted_option == $correct_option) {
             $correct = $correct + 1;
         } else {
@@ -30,7 +29,6 @@ if (isset($_POST['submit'])) {
         } else if ($correct_option == 'D') {
             $correct_answer = $row['optionD'];
         }
-
         //User has attempted the question in form of option inserted
         //Following is done to display the answer in sentence form 
         $attempted_answer = '';
@@ -49,6 +47,19 @@ if (isset($_POST['submit'])) {
         $count++;
     }
     echo 'Total correct Answers : ' . $correct . '<br>' . 'Total Wrong answers : ' . $wrong . '<br>';
+    session_start();
+    if (isset($_SESSION['sid'])) {
+        $student_id = $_SESSION['sid'];
+    }
+    // $student_id = $_SESSION["sid"];
+    $total_marks_query = "SELECT total_marks FROM quiz where quiz_id='$quiz_id'";
+    $restotalmarks = $database->query($total_marks_query);
+    $total_marks = $restotalmarks->fetchColumn();
+    $your_score = ($correct * 100.0) / ($count - 1);
+    $your_score = number_format($your_score, 2);    //Upto 2 decimal places
+    // echo "\nStudent id : " . $student_id . "\nTotal marks : " . $total_marks . "\nCorrect : " . $correct . "Your score : " . $your_score;
+    $insertattemptquery = "INSERT INTO previousattempts(correct_answers,student_id,quiz_id,total_marks,your_score) values ('$correct' ,'$student_id','$quiz_id','$total_marks','$your_score')";
+    $result = $database->query($insertattemptquery);
 }
 ?>
 <!DOCTYPE html>

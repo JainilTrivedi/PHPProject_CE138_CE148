@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 27, 2021 at 04:34 PM
+-- Generation Time: Mar 28, 2021 at 08:08 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.0
 
@@ -42,10 +42,81 @@ INSERT INTO `admin` (`username`, `password`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `previousattempts`
+--
+
+CREATE TABLE `previousattempts` (
+  `id` int(11) NOT NULL,
+  `correct_answers` int(11) NOT NULL,
+  `student_id` int(11) NOT NULL,
+  `quiz_id` int(11) NOT NULL,
+  `your_score` double DEFAULT NULL,
+  `total_marks` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `previousattempts`
+--
+
+INSERT INTO `previousattempts` (`id`, `correct_answers`, `student_id`, `quiz_id`, `your_score`, `total_marks`) VALUES
+(2, 2, 1, 74, 33.33, 6),
+(3, 0, 1, 75, 0, 10),
+(4, 0, 1, 75, 0, 10),
+(5, 2, 1, 78, 50, 4),
+(6, 2, 1, 78, 50, 4),
+(7, 2, 1, 74, 66.67, 6),
+(8, 2, 1, 74, 66.67, 6),
+(9, 2, 1, 78, 66.67, 4),
+(10, 3, 1, 74, 100, 6),
+(11, 3, 1, 74, 100, 6),
+(12, 3, 1, 74, 100, 6),
+(13, 3, 1, 74, 100, 6),
+(14, 3, 1, 74, 100, 6),
+(15, 3, 1, 74, 100, 6),
+(16, 3, 1, 74, 100, 6),
+(17, 3, 1, 74, 100, 6),
+(18, 1, 1, 74, 33.33, 6),
+(19, 1, 1, 74, 33.33, 6),
+(20, 1, 1, 74, 33.33, 6),
+(21, 1, 1, 74, 33.33, 6),
+(22, 1, 1, 74, 33.33, 6),
+(23, 1, 1, 74, 33.33, 6),
+(24, 1, 1, 74, 33.33, 6),
+(25, 2, 1, 74, 66.67, 6),
+(26, 2, 1, 74, 66.67, 6),
+(27, 2, 1, 74, 66.67, 6),
+(28, 2, 1, 74, 66.67, 6),
+(29, 2, 1, 74, 66.67, 6),
+(30, 2, 1, 74, 66.67, 6),
+(31, 2, 1, 74, 66.67, 6),
+(32, 2, 1, 74, 66.67, 6),
+(33, 2, 1, 74, 66.67, 6),
+(34, 2, 1, 74, 66.67, 6),
+(35, 2, 1, 74, 66.67, 6),
+(36, 2, 1, 74, 66.67, 6),
+(37, 2, 1, 74, 66.67, 6),
+(38, 2, 1, 74, 66.67, 6),
+(39, 2, 1, 74, 66.67, 6),
+(40, 2, 1, 74, 66.67, 6),
+(41, 2, 1, 74, 66.67, 6),
+(42, 2, 1, 74, 66.67, 6),
+(43, 2, 1, 74, 66.67, 6),
+(44, 2, 1, 74, 66.67, 6),
+(45, 2, 1, 74, 66.67, 6),
+(46, 2, 1, 74, 66.67, 6),
+(47, 2, 1, 74, 66.67, 6),
+(48, 2, 1, 74, 66.67, 6),
+(49, 2, 1, 74, 66.67, 6),
+(50, 2, 1, 74, 66.67, 6);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `questions`
 --
 
 CREATE TABLE `questions` (
+  `question_id` int(11) NOT NULL,
   `quiz_id` int(11) NOT NULL,
   `ques` varchar(2083) NOT NULL,
   `optionA` varchar(127) NOT NULL,
@@ -59,17 +130,19 @@ CREATE TABLE `questions` (
 -- Dumping data for table `questions`
 --
 
-INSERT INTO `questions` (`quiz_id`, `ques`, `optionA`, `optionB`, `optionC`, `optionD`, `correct_option`) VALUES
-(74, 'PHP is used in?', 'android dev', 'ios dev', 'web dev', 'none of the above', 'c'),
-(74, 'End tag of PHP is ?', '</php>', '?>', '</?php>', '<?php>', 'b'),
-(74, 'Did u like the quiz', 'yes', '-', '-', 'no', 'a'),
-(75, 'What is your name?', 'Jainil', 'Dhruval', 'Vrundan', 'Harprit', 'b'),
-(75, 'What is your name?', 'Jainil', 'Dhruval', 'Vrundan', 'Harprit', 'c'),
-(75, 'What is your name?', 'Telusko', 'harry', 'Durgesh', 'Apoorva Sir', 'd'),
-(78, 'The term PHP is an acronym for PHP:_______________?', 'Hypertext Preprocessor', 'Hypertext multiprocessor', 'Hypertext markup Preprocessor', 'Hypertune Preprocessor', 'A'),
-(78, 'Who is founder of PHP?', 'Tim Berners-Lee', 'Brendan Eich', 'Guido van Rossum', 'Rasmus Lerdorf', 'D'),
-(78, 'In which year PHP was created ?', '1993', '1994', '1995', '1996', 'B'),
-(79, 'What is 1+1?', '2', '3', '0', '1', 'a');
+INSERT INTO `questions` (`question_id`, `quiz_id`, `ques`, `optionA`, `optionB`, `optionC`, `optionD`, `correct_option`) VALUES
+(1, 74, 'PHP is used in?', 'android dev', 'ios dev', 'web dev', 'none of the above', 'c'),
+(2, 74, 'End tag of PHP is ?', '</php>', '?>', '</?php>', '<?php>', 'b'),
+(3, 74, 'Did u like the quiz', 'yes', '-', '-', 'no', 'a'),
+(4, 75, 'What is your name?', 'Jainil', 'Dhruval', 'Vrundan', 'Harprit', 'b'),
+(5, 75, 'What is your name?', 'Jainil', 'Dhruval', 'Vrundan', 'Harprit', 'c'),
+(6, 75, 'What is your name?', 'Telusko', 'harry', 'Durgesh', 'Apoorva Sir', 'd'),
+(7, 78, 'The term PHP is an acronym for PHP:_______________?', 'Hypertext Preprocessor', 'Hypertext multiprocessor', 'Hypertext markup Preprocessor', 'Hypertune Preprocessor', 'A'),
+(8, 78, 'Who is founder of PHP?', 'Tim Berners-Lee', 'Brendan Eich', 'Guido van Rossum', 'Rasmus Lerdorf', 'D'),
+(9, 78, 'In which year PHP was created ?', '1993', '1994', '1995', '1996', 'B'),
+(10, 79, 'What is 1+1?', '2', '3', '0', '1', 'a'),
+(11, 81, 'dummy question', 'dummy option a', 'dummy option b', 'dummy option c', 'dummy option d', 'a'),
+(12, 82, 'dummy question', 'lorem ipsum a', 'lorem ipsum b', 'lorem ipsum c', 'lorem ipsum d', 'a');
 
 -- --------------------------------------------------------
 
@@ -94,7 +167,9 @@ INSERT INTO `quiz` (`quiz_id`, `quiz_name`, `total_marks`, `total_question`, `te
 (74, 'PHP_1', 6, 3, 2, 1),
 (75, 'PHP_2', 10, 3, 2, 2),
 (78, 'QUIZ_3', 4, 3, 2, 1),
-(79, 'Math1', 2, 1, 2, 3);
+(79, 'Math1', 2, 1, 2, 3),
+(81, 'PHP4', 10, 1, 1, 1),
+(82, 'PHP5', 10, 1, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -173,9 +248,18 @@ INSERT INTO `teacher` (`id`, `firstname`, `lastname`, `Email`, `Phone_no`, `Subj
 --
 
 --
+-- Indexes for table `previousattempts`
+--
+ALTER TABLE `previousattempts`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_quizid` (`quiz_id`),
+  ADD KEY `student_id` (`student_id`);
+
+--
 -- Indexes for table `questions`
 --
 ALTER TABLE `questions`
+  ADD PRIMARY KEY (`question_id`),
   ADD KEY `fk_quiz_id` (`quiz_id`);
 
 --
@@ -209,10 +293,22 @@ ALTER TABLE `teacher`
 --
 
 --
+-- AUTO_INCREMENT for table `previousattempts`
+--
+ALTER TABLE `previousattempts`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+
+--
+-- AUTO_INCREMENT for table `questions`
+--
+ALTER TABLE `questions`
+  MODIFY `question_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
 -- AUTO_INCREMENT for table `quiz`
 --
 ALTER TABLE `quiz`
-  MODIFY `quiz_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
+  MODIFY `quiz_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
 
 --
 -- AUTO_INCREMENT for table `student`
@@ -235,6 +331,13 @@ ALTER TABLE `teacher`
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `previousattempts`
+--
+ALTER TABLE `previousattempts`
+  ADD CONSTRAINT `fk_quizid` FOREIGN KEY (`quiz_id`) REFERENCES `quiz` (`quiz_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `previousattempts_ibfk_1` FOREIGN KEY (`student_id`) REFERENCES `student` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `questions`

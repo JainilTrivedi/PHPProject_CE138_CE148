@@ -34,8 +34,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
          $student_row = $database->query($sql);
          $present_student = $student_row->rowCount();
          if ($present_student == 1) {
+            $sres = $student_row->fetch();
+            $studentname = $sres['firstname'];
+            $_SESSION['sname'] = $studentname;
             echo "Login successful as a student";
-            $sid = $student_row->fetchColumn(0);
+            $sid = $sres['id'];
             echo "Student id : " . $sid;
             $_SESSION['sid'] = $sid;
             echo $_SESSION['sid'];

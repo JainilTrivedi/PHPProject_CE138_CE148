@@ -14,9 +14,20 @@ $attempts = $database->query($getattemptsquery);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <title>Previous attempts</title>
+    <link rel="stylesheet" type="text/css" href="navbar.css">
 </head>
 
 <body>
+    <ul>
+        <li>
+            <div id="sitename">Online Quiz</div>
+        </li>
+        <li>
+            <a href="student.php" style="text-decoration:none">
+                <div id="text2">Home</div>
+            </a>
+        </li>
+    </ul>
     <h1 align="center">Your previous attempts</h1>
     <table class="table" style="width:800px;" align="center" border="1px">
         <thead class="thead-dark">

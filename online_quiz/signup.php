@@ -18,7 +18,7 @@
                         <input type="email" name="email" placeholder="Email-id">
                         <input type="text" name="phoneno" placeholder="Phone number">
                         <input type="text" name="uname" placeholder="Choose Username">
-                        <label for="role">Role</label>
+                        <font color="white"><label for="role">Role : </label></font>
                         <select name="role" id="role">
                             <option value="Teacher">Teacher</option>
                             <option value="Student">Student</option>
@@ -30,21 +30,13 @@
                 </div>
             </div>
         </div>
-        <table align="right">
-            <tr>
-                <td>
-                    <small>
-                        <font style="text-align:right;" color="black">* indicates that it will be considered the preferred subject</font>
-                    </small>
-                </td>
-            </tr>
-        </table>
     </div>
 </body>
 
 </html>
 <?php
 require_once "config.php";
+session_start();
 if (isset($_POST['submit'])) {
     $firstname = $_POST['fname'];
     $lastname = $_POST['lname'];
@@ -56,11 +48,27 @@ if (isset($_POST['submit'])) {
     if ($role == "Teacher") {
         $insert_query = "insert into `teacher`(firstname,lastname,Email,Phone_no,username,password) values ('$firstname','$lastname','$email','$contact','$username','$password')";
         $database->query($insert_query);
+        //To get the id of last inserted teacher
+        $getteacheridsquery = "Select id FROM teacher order by id DESC";
+        $getidqexec = $database->query($getteacheridsquery);
+        $trows = $getidqexec->fetch(PDO::FETCH_NUM, PDO::FETCH_ORI_LAST);
+        $tid = $trows[0];
+        $_SESSION['tid'] = $tid;
+        $_SESSION['tname'] = $firstname;
+        header('Location:teacher.php');
     } else if ($role == "Student") {
         $insert_query = "insert into `student`(firstname,lastname,email,contact,username,password) values ('$firstname','$lastname','$email','$contact','$username','$password')";
         $database->query($insert_query);
+        //To get the id of last inserted student
+        $getstudentquery = "Select id FROM student order by id DESC";
+        $getsidqexec = $database->query($getstudentquery);
+        $srows = $getsidqexec->fetch(PDO::FETCH_NUM, PDO::FETCH_ORI_LAST);
+        $sid = $srows[0];
+        $_SESSION['sid'] = $sid;
+        $_SESSION['sname'] = $firstname;
+        header('Location:student.php');
     } else {
         echo "Invalid";
     }
 }
-?>      
+?>

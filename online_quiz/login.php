@@ -20,11 +20,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
          $teacher_row = $database->query($sql);
          //$present_teacher = $teacher_row->fetchColumn(); //Count 
          $count = $teacher_row->rowCount();
-
          if ($count == 1) {
-            $tid = $teacher_row->fetchColumn(0);
+            $tres = $teacher_row->fetch();
+            $tid = $tres['id'];
+            $tname = $tres['firstname'];
             echo "Login Successful as teacher";
             $_SESSION['tid'] = $tid;
+            $_SESSION['tname'] = $tname;
             header('location:teacher.php');
          } else {
             echo "Invalid";
@@ -53,29 +55,49 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <head>
    <title>Login Page</title>
+   <link rel="stylesheet" type="text/css" href="abcd.css">
+   <style>
+      .button {
+         background-color: #008CBA;
+         border: none;
+         color: white;
+         padding: 15px 32px;
+         text-align: center;
+         text-decoration: none;
+         display: inline-block;
+         font-size: 16px;
+         margin: 4px 2px;
+         cursor: pointer;
+         border-radius: 10px;
+      }
+
+      .button :hover {
+         background-color: #4CAF50;
+      }
+   </style>
 </head>
 
 <body>
-   <form action="login.php" method="POST">
-      <div align="center">
-         <h1>Enter Login details</h1>
-         <table>
-            <tr>
-               <td>Username:</td>
-               <td><input type="text" name="uname" required placeholder="Enter Username Here"></td>
-            </tr>
-            <tr>
-               <td>Password:</td>
-               <td><input type="password" name="password" required placeholder="Password"></td>
-            </tr>
-            <input type="hidden" name="role" value="<?php echo $role; ?>">
-            <tr>
-               <td><input type="submit" name="submit" value="Login!"></td>
-            </tr>
-         </table>
-         <a href="homepage.php">Return Home</a>
+   <div class="container">
+      <div class="row">
+         <div class="col md-6">
+            <div class="card">
+               <form action="login.php" class="box" method="POST">
+                  <div align="center">
+                     <h1>Enter Login details</h1>
+                     <input type="text" name="uname" required placeholder="Enter Username Here">
+                     <input type="password" name="password" required placeholder="Password">
+                     <input type="hidden" name="role" value="<?php echo $role; ?>">
+                     <input type="submit" name="submit" value="Login!">
+                     <p>Don't have an account ? </p>
+                  </div>
+                  <a class="button" href="signup.php">Register</a>
+                  <a class="button" href="home.php">Home</a>
+               </form>
+            </div>
+         </div>
       </div>
-   </form>
+   </div>
 </body>
 
 </html>

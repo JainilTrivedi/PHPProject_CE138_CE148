@@ -10,6 +10,15 @@ if (isset($_GET['attempts']) && $_GET['attempts'] == 1) {
    $attempt = 1;
    echo "Attempt : " . $attempt;
 }
+
+if (isset($_GET['logout']) && $_GET['logout'] == 1) {
+   if (isset($_SESSION['sid']) && isset($_SESSION['sname'])) {
+      unset($_SESSION['sid']);
+      unset($_SESSION['sname']);
+      header('Location:home.php?loggedout=1');
+   }
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -53,6 +62,9 @@ if ($_SERVER["REQUEST_METHOD"] == "GET"  && isset($_GET['sub'])) {
                <input style="width:100px;height:35px;" class=" btn btn-primary" type="submit" name="submit" value="Search">
             </form>
          </div>
+      </li>
+      <li>
+         <a style="margin-top:7px;" class="btn btn-primary" href="student.php?logout=1">Logout</a>
       </li>
    </ul>
    <h1 style="margin-top:10px;" align="center">Following quizes are available</h1> &nbsp;

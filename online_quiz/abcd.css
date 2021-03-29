@@ -48,6 +48,7 @@ body {
   color: white;
   text-transform: uppercase;
   font-weight: 500;
+  text-decoration: none;
 }
 .box h2 {
   color: white;
@@ -89,11 +90,18 @@ p {
   text-transform: uppercase;
 }
 
-.search input[type=text] {
-    float: right;
-    padding: 6px;
-    border: none;
-    margin-top: 8px;
-    margin-right: 16px;
-    font-size: 17px;
-  }
+.search input[type="text"] {
+  float: right;
+  padding: 6px;
+  border: none;
+  margin-top: 8px;
+  margin-right: 16px;
+  font-size: 17px;
+}
+.box select {
+  width: 150px;
+  background-color: #3a3b3c;
+  color: #e8dbfc;
+  border-radius: 3px;
+  border: 2px solid #3498db;
+}

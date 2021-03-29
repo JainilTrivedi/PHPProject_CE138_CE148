@@ -1,0 +1,14 @@
+body {
+  background: url(homepagebg.jpg) no-repeat center center fixed;
+  background-size: cover;
+}
+
+.buttons {
+  margin-top: 100px;
+  margin-left: 400px;
+  margin-right: 100px;
+}
+.buttons a {
+  margin-left: 10px;
+  margin-right: 10px;
+}

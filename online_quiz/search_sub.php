@@ -8,6 +8,24 @@
    <title>Search</title>
    <link rel="stylesheet" type="text/css" href="navbar.css">
    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+   <style>
+      .button {
+         background-color: #008CBA;
+         border: none;
+         color: white;
+         padding: 10px 20px;
+         text-align: center;
+         text-decoration: none;
+         display: inline-block;
+         font-size: 16px;
+         margin: 4px 2px;
+         cursor: pointer;
+         border-radius: 10px;
+      }
+      .button :hover {
+         background-color: #4CAF50;
+      }
+   </style>
 </head>
 
 <body>
@@ -27,6 +45,15 @@
       $s = $_GET['sub'];
       $select_sub = "SELECT subject_id from `subject` where subject_name='$s'";
       $tmp_sid = $database->query($select_sub);
+      $rows_tmp_sid=$tmp_sid->rowCount();
+      if($rows_tmp_sid==0){
+         echo "<h3>Quiz fo rthis subject will be added soon<h3><br>";
+         ?>
+         <a class="button" href="home.php">Home</a>
+
+      <?php
+         die();
+      }
       $sub_id = $tmp_sid->fetchColumn(0);
    ?>
       <h4 style="margin-top:25px;" align="center"><?php echo "Search results for " . $s . "<br><br>";  ?></h4>

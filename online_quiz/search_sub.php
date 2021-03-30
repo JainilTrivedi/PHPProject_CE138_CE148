@@ -6,26 +6,9 @@
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Search</title>
-   <link rel="stylesheet" type="text/css" href="navbar.css">
+   <link rel="stylesheet" type="text/css" href="css/navbar.css">
+   <link rel="stylesheet" type="text/css" href="css/button.css">
    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-   <style>
-      .button {
-         background-color: #008CBA;
-         border: none;
-         color: white;
-         padding: 10px 20px;
-         text-align: center;
-         text-decoration: none;
-         display: inline-block;
-         font-size: 16px;
-         margin: 4px 2px;
-         cursor: pointer;
-         border-radius: 10px;
-      }
-      .button :hover {
-         background-color: #4CAF50;
-      }
-   </style>
 </head>
 
 <body>
@@ -45,17 +28,17 @@
       $s = $_GET['sub'];
       $select_sub = "SELECT subject_id from `subject` where subject_name='$s'";
       $tmp_sid = $database->query($select_sub);
-      $rows_tmp_sid=$tmp_sid->rowCount();
-      if($rows_tmp_sid==0){
-         echo "<h3>Quiz fo rthis subject will be added soon<h3><br>";
-         ?>
+      $rows_tmp_sid = $tmp_sid->rowCount();
+      if ($rows_tmp_sid == 0) {
+         echo "<div align='center' style='margin-top:20px;'><h3>Quiz for this subject will be added soon<h3><br>";
+   ?>
          <a class="button" href="home.php">Home</a>
-
+         </div>
       <?php
          die();
       }
       $sub_id = $tmp_sid->fetchColumn(0);
-   ?>
+      ?>
       <h4 style="margin-top:25px;" align="center"><?php echo "Search results for " . $s . "<br><br>";  ?></h4>
       <div style="outline-style:groove; margin-left:50px; margin-right:50px;margin-top:10px">
          <?php

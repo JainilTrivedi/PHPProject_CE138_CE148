@@ -2,8 +2,8 @@
 
 <head>
     <title>Homepage</title>
-    <link rel="stylesheet" type="text/css" href="homepage.css">
-    <link rel="stylesheet" type="text/css" href="navbar.css">
+    <link rel="stylesheet" type="text/css" href="css/homepage.css">
+    <link rel="stylesheet" type="text/css" href="css/navbar.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 

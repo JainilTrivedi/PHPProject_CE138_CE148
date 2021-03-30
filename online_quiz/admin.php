@@ -6,42 +6,11 @@
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Admin</title>
-   <link rel="stylesheet" type="text/css" href="navbar.css">
-   <link rel="stylesheet" type="text/css" href="abcd.css">
+   <link rel="stylesheet" type="text/css" href="css/navbar.css">
+   <link rel="stylesheet" type="text/css" href="css/styles.css">
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-   <style type="text/css">
-      #aform {
-         margin-left: 200px;
-         margin-right: 200px;
-         margin-top: 50px;
-
-      }
-
-      #aform form {
-         height: 350px;
-         width: 600px;
-         padding-top: 60px;
-      }
-
-      #aform input[type="text"] {
-         border-radius: 5px;
-         text-align: center;
-         border: 2px solid #39CCCC;
-         width: 300px;
-         height: 40px;
-      }
-
-      #aform input[type="password"] {
-         border-radius: 5px;
-         text-align: center;
-         border: 2px solid #39CCCC;
-         width: 300px;
-         height: 40px;
-      }
-   </style>
+   <link rel="stylesheet" type="text/css" href="css/adminform.css">
 </head>
-
-
 <?php
 session_start();
 require_once "config.php";
@@ -79,10 +48,6 @@ if (isset($_GET['newsub'])) {
 
 
 if (isset($_GET['loggedin']) && $_GET['loggedin'] == 1) {
-
-   if (isset($_GET['inside'])) {
-      //echo "INSIDE<br>";
-   }
    //teachers query
    $teacher_query = "SELECT * from teacher";
    $t = $database->query($teacher_query);
@@ -90,8 +55,6 @@ if (isset($_GET['loggedin']) && $_GET['loggedin'] == 1) {
    //students query
    $student_query = "SELECT * from student ";
    $s = $database->query($student_query);
-
-   //print_r($s->fetch());
 ?>
 
    <body>
@@ -108,29 +71,28 @@ if (isset($_GET['loggedin']) && $_GET['loggedin'] == 1) {
       </ul>
       <!-- Teacher tABLE -->
       <table class="table" style="width:400px;" border="1px" align="center">
-         <thead class="thead-dark">
+         <thead class="thead-dark" align="center">
             <th colspan="2">Teacher</th>
          </thead>
-         <thead>
+         <thead align="center">
             <th>Name</th>
             <th>Action</th>
          </thead>
 
          <?php while ($rows = $t->fetch()) { ?>
             <tr>
-               <td> <?php echo $rows['firstname'] . " " . $rows['lastname']  ?> </td>
-               <td> <a class="btn btn-danger" href="admin.php?remove=1&tid=<?php echo $rows['id'] ?>"> Remove</a> </td>
+               <td align="center"> <?php echo $rows['firstname'] . " " . $rows['lastname']  ?> </td>
+               <td align="center"> <a class="btn btn-danger" href="admin.php?remove=1&tid=<?php echo $rows['id'] ?>"> Remove</a> </td>
             </tr>
-            <br><br>
          <?php } ?>
       </table>
       <br>
       <!-- Student table -->
       <table class="table" style="width:400px;" align="center" border="1px">
-         <thead class="thead-dark">
+         <thead class="thead-dark" align="center">
             <th colspan="2"> <b> Students </b></th>
          </thead>
-         <thead>
+         <thead align="center">
             <th>Name</th>
             <th>Action</th>
          </thead>
@@ -138,8 +100,8 @@ if (isset($_GET['loggedin']) && $_GET['loggedin'] == 1) {
          ?>
             <tbody>
                <tr>
-                  <td> <?php echo $r['firstname'] . "" . $r['lastname'] ?> </td>
-                  <td> <a class="btn btn-danger" href="admin.php?remove=2&sid=<?php echo $r['id'] ?>"> Remove</a> </td>
+                  <td align="center"> <?php echo $r['firstname'] . " " . $r['lastname'] ?> </td>
+                  <td align="center"> <a class="btn btn-danger" href="admin.php?remove=2&sid=<?php echo $r['id'] ?>"> Remove</a> </td>
                </tr>
             </tbody>
          <?php } ?>
@@ -147,12 +109,12 @@ if (isset($_GET['loggedin']) && $_GET['loggedin'] == 1) {
       <br>
 
       <table class="table" style="width:400px;" align="center" border="1px">
-         <thead class="thead-dark">
+         <thead class="thead-dark" align="center">
             <th colspan="2">Current Subjects</th>
          </thead>
-         <thead>
-            <th>Sr. No.</th>
-            <th>Subjact Name</th>
+         <thead align="center">
+            <th>No.</th>
+            <th>Subject Name</th>
          </thead>
          <?php
          $subject_query = "SELECT * FROM subject";
@@ -160,17 +122,17 @@ if (isset($_GET['loggedin']) && $_GET['loggedin'] == 1) {
          while ($sub = $get_subject->fetch()) { ?>
             <tbody>
                <tr>
-                  <td> <?php echo $num;
-                        $num += 1 ?> </td>
-                  <td> <?php echo $sub['subject_name'];   ?></td>
+                  <td align="center"> <?php echo $num;
+                                       $num += 1 ?> </td>
+                  <td align="center" width="250px"> <?php echo $sub['subject_name'];   ?></td>
                </tr>
 
             <?php  }
             ?>
             <form action="admin.php" action="GET">
                <tr>
-                  <td><input type="text" name="new_sub" placeholder="Subject Name"></td>
-                  <td><input type="submit" class="btn btn-danger" name="newsub" value="Add sub"></td>
+                  <td align="center"><input class="form-control" type="text" name="new_sub" placeholder="Subject Name"></td>
+                  <td align="center"><input type="submit" class="btn btn-danger" name="newsub" value="Add sub"></td>
                </tr>
             </form>
             </tbody>

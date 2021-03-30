@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <title>Validate</title>
-    <link rel="stylesheet" type="text/css" href="navbar.css">
+    <link rel="stylesheet" type="text/css" href="css/navbar.css">
 </head>
 
 <body>
@@ -77,9 +77,9 @@
 
                 echo '<tr><td>' . $count . '</td><td width="300px">' . $row['ques'] . '</td><td>' . $attempted_answer . '(' . $attempted_option . ')</td><td>' . $correct_answer . ' (' . $correct_option . ')</td>';
                 if ($correct_option == $attempted_option) {
-                    echo '<td align="center"><img src="correct.png" height="30px" width="25px"></td>';
+                    echo '<td align="center"><img src="images/correct.png" height="30px" width="25px"></td>';
                 } else {
-                    echo '<td align="center"><img src="wrong.png" height="25px" width="30px"></td>';
+                    echo '<td align="center"><img src="images/wrong.png" height="25px" width="30px"></td>';
                 }
                 // echo "Question-" . $count . " : " . $row['ques'] . '<br>';
                 // echo "Your Answer : " . $attempted_answer . ' (' . $attempted_option . ') <br>';

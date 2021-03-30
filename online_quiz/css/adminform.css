@@ -1,0 +1,27 @@
+#aform {
+  margin-left: 200px;
+  margin-right: 200px;
+  margin-top: 50px;
+}
+
+#aform form {
+  height: 350px;
+  width: 600px;
+  padding-top: 60px;
+}
+
+#aform input[type="text"] {
+  border-radius: 5px;
+  text-align: center;
+  border: 2px solid #39cccc;
+  width: 300px;
+  height: 40px;
+}
+
+#aform input[type="password"] {
+  border-radius: 5px;
+  text-align: center;
+  border: 2px solid #39cccc;
+  width: 300px;
+  height: 40px;
+}

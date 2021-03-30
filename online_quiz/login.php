@@ -55,26 +55,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <head>
    <title>Login Page</title>
-   <link rel="stylesheet" type="text/css" href="abcd.css">
-   <style>
-      .button {
-         background-color: #008CBA;
-         border: none;
-         color: white;
-         padding: 15px 32px;
-         text-align: center;
-         text-decoration: none;
-         display: inline-block;
-         font-size: 16px;
-         margin: 4px 2px;
-         cursor: pointer;
-         border-radius: 10px;
-      }
-
-      .button :hover {
-         background-color: #4CAF50;
-      }
-   </style>
+   <link rel="stylesheet" type="text/css" href="css/styles.css">
+   <link rel="stylesheet" type="text/css" href="css/button.css">
 </head>
 
 <body>

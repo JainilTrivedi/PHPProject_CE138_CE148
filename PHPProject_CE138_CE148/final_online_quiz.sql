@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 29, 2021 at 08:59 AM
+-- Generation Time: Mar 30, 2021 at 03:50 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.0
 
@@ -107,8 +107,7 @@ INSERT INTO `previousattempts` (`id`, `correct_answers`, `student_id`, `quiz_id`
 (47, 2, 1, 74, 66.67, 6),
 (48, 2, 1, 74, 66.67, 6),
 (49, 2, 1, 74, 66.67, 6),
-(50, 2, 1, 74, 66.67, 6),
-(51, 2, 1, 126, 66.67, 1);
+(50, 2, 1, 74, 66.67, 6);
 
 -- --------------------------------------------------------
 
@@ -141,15 +140,7 @@ INSERT INTO `questions` (`question_id`, `quiz_id`, `ques`, `optionA`, `optionB`,
 (7, 78, 'The term PHP is an acronym for PHP:_______________?', 'Hypertext Preprocessor', 'Hypertext multiprocessor', 'Hypertext markup Preprocessor', 'Hypertune Preprocessor', 'A'),
 (8, 78, 'Who is founder of PHP?', 'Tim Berners-Lee', 'Brendan Eich', 'Guido van Rossum', 'Rasmus Lerdorf', 'D'),
 (9, 78, 'In which year PHP was created ?', '1993', '1994', '1995', '1996', 'B'),
-(10, 79, 'What is 1+1?', '2', '3', '0', '1', 'a'),
-(36, 123, 'dummy1', 'a', 'b', 'c', 'd', 'a'),
-(37, 123, 'dummy2', 'a', 'b', 'c', 'd', 'a'),
-(38, 123, 'dummy3', 'a', 'b', 'c', 'd', 'a'),
-(39, 124, 'Dummy1', 'A', 'B', 'C', 'D', 'A'),
-(42, 126, 'dummy1', 'a', 'b', 'c', 'd', 'A'),
-(43, 126, 'dummy2', 'dummy3', 'dummy4', 'dummy5', 'dumm d ', 'C'),
-(44, 126, 'ome', 'a', 'b', 'c', 'd', 'B'),
-(45, 127, 'Hello dummy take 100101', 'a', 'b', 'c', 'd', 'A');
+(10, 79, 'What is 1+1?', '2', '3', '0', '1', 'a');
 
 -- --------------------------------------------------------
 
@@ -174,11 +165,7 @@ INSERT INTO `quiz` (`quiz_id`, `quiz_name`, `total_marks`, `total_question`, `te
 (74, 'PHP_1', 6, 3, 2, 1),
 (75, 'PHP_2', 10, 3, 2, 2),
 (78, 'QUIZ_3', 4, 3, 2, 1),
-(79, 'Math1', 2, 1, 2, 3),
-(123, 'php3recent', 10, 3, 1, 1),
-(124, 'phprecent4', 1, 1, 1, 1),
-(126, 'php5', 1, 3, 1, 1),
-(127, 'php123', 1, 1, 1, 1);
+(79, 'Math1', 2, 1, 2, 3);
 
 -- --------------------------------------------------------
 
@@ -201,8 +188,7 @@ CREATE TABLE `student` (
 --
 
 INSERT INTO `student` (`id`, `firstname`, `lastname`, `contact`, `email`, `username`, `password`) VALUES
-(1, 'Harpritsinh', 'Yadav', '12345679', 'hjy@ddu', 'harprit123', 'abcd'),
-(6, 'vrundan', 'trivedi', '0000', 'dhruvalyadav@ddu', 'desvruwalpreet', 'jdvh');
+(1, 'Harpritsinh', 'Yadav', '12345679', 'hjy@ddu', 'harprit123', 'abcd');
 
 -- --------------------------------------------------------
 
@@ -246,10 +232,11 @@ CREATE TABLE `teacher` (
 --
 
 INSERT INTO `teacher` (`id`, `firstname`, `lastname`, `Email`, `Phone_no`, `username`, `password`) VALUES
-(1, 'vrundan', 'viru', 'vri@ddu', '111', 'vrandan', 'abcd'),
 (2, 'jai', 'tri', 'jt@ddu', '999', 'jnil', 'abc'),
-(4, 'harprit', 'yadav', 'abc@ddu', '123456', 'hbc', 'abcd'),
-(5, 'harprit', 'yadav2', 'teacher@ddu', '190909', 'harprit2', 'abcd');
+(5, 'harprit', 'yadav2', 'teacher@ddu', '190909', 'harprit2', 'abcd'),
+(7, 'abcd', 'abcd', 'abcd@ddu', '12899', 'hjy', 'abcd'),
+(8, 'abcd', 'aa', 'abc@ddu', '190', 'hjy678', 'ab'),
+(10, 'abcd', 'abcd', 'test@ddu', '1234567890', 'testddu', 'abcdAB1@');
 
 --
 -- Indexes for dumped tables
@@ -304,25 +291,25 @@ ALTER TABLE `teacher`
 -- AUTO_INCREMENT for table `previousattempts`
 --
 ALTER TABLE `previousattempts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
 -- AUTO_INCREMENT for table `questions`
 --
 ALTER TABLE `questions`
-  MODIFY `question_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `question_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT for table `quiz`
 --
 ALTER TABLE `quiz`
-  MODIFY `quiz_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=128;
+  MODIFY `quiz_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=131;
 
 --
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `subject`
@@ -334,7 +321,7 @@ ALTER TABLE `subject`
 -- AUTO_INCREMENT for table `teacher`
 --
 ALTER TABLE `teacher`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- Constraints for dumped tables
@@ -357,8 +344,8 @@ ALTER TABLE `questions`
 -- Constraints for table `quiz`
 --
 ALTER TABLE `quiz`
-  ADD CONSTRAINT `subject_id` FOREIGN KEY (`subject_id`) REFERENCES `subject` (`subject_id`),
-  ADD CONSTRAINT `teacher_id` FOREIGN KEY (`teacher_id`) REFERENCES `teacher` (`id`);
+  ADD CONSTRAINT `subject_id` FOREIGN KEY (`subject_id`) REFERENCES `subject` (`subject_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `teacher_id` FOREIGN KEY (`teacher_id`) REFERENCES `teacher` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
